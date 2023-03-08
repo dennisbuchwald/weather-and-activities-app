@@ -1,14 +1,20 @@
 import "./App.css";
 import { Form } from "./components/Form";
-import { uid } from "uuid";
+import { uid } from "uid";
 import { useState } from "react";
 
 function App() {
-  // const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState([]);
 
-  const handleAddActivity = (data) => console.log(data);
-  // const handleAddActivity = (data) =>
-
+  const handleAddActivity = (data) => {
+    const newActivity = {
+      id: uid(),
+      name: data.name,
+      isForGoodWeather: data.isForGoodWeather,
+    };
+    console.log(newActivity);
+    setActivities([activities, newActivity]);
+  };
   return (
     <div>
       <Form onAddActivity={handleAddActivity} />
